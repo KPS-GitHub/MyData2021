@@ -1,11 +1,14 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { colors } from '../vars/colors'
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, pageTitle, path }) => {
+  console.log("colors", colors)
+  return (
   <header
     style={{
-      background: `rebeccapurple`,
+      background: colors.primary,
       marginBottom: `1.45rem`,
     }}
   >
@@ -22,14 +25,15 @@ const Header = ({ siteTitle }) => (
           style={{
             color: `white`,
             textDecoration: `none`,
+            textShadow: '2px 2px 2px ' + colors.tertiary,
           }}
         >
-          {siteTitle}
+          {pageTitle ? pageTitle : siteTitle ? siteTitle : "Page Title"}
         </Link>
       </h1>
     </div>
   </header>
-)
+)}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
